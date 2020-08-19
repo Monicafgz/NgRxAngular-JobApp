@@ -1,0 +1,48 @@
+<div class="main-holder">
+  <mat-card
+    ><h2>
+      {{ offer.job.name }}
+    </h2>
+    <mat-card-content>
+      <table class="mat-table">
+        <tr class="mat-row">
+          <th class="mat-header-cell">Descripción</th>
+          <td class="mat-cell">{{ offer.job.description }}</td>
+        </tr>
+        <tr class="mat-row">
+          <th class="mat-header-cell">Localidad</th>
+          <td class="mat-cell">
+            {{ offer.municipe.name }}, {{ offer.province.name }}
+          </td>
+        </tr>
+        <tr class="mat-row">
+          <th class="mat-header-cell">Empresa</th>
+          <td class="mat-cell">{{ offer.company.name }}</td>
+        </tr>
+        <tr class="mat-row">
+          <th class="mat-header-cell">Fecha</th>
+          <td class="mat-cell">{{ offer.date }}</td>
+        </tr>
+      </table>
+    </mat-card-content>
+
+    <mat-card-actions style="margin-top: 20px; text-align: right;"
+      ><button
+        *ngIf="!isSubscribe()"
+        mat-raised-button
+        color="primary"
+        (click)="subscribe()"
+      >
+        Inscribirse
+      </button>
+      <button
+        *ngIf="isSubscribe()"
+        mat-raised-button
+        color="primary"
+        (click)="unsubscribe()"
+      >
+        Eliminar oferta
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,63 @@
+<div class="main-holder">
+  <mat-card>
+    <form [formGroup]="rForm" (submit)="submit()">
+      <mat-card-content>
+        <div class="form-group">
+          <mat-form-field class="full-width-field">
+            <mat-label for="level">Nivel</mat-label>
+            <mat-select
+              [compareWith]="compareLevel"
+              name="level"
+              formControlName="level"
+            >
+              <mat-option [value]="level" *ngFor="let level of languageLevels">
+                {{ level.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group">
+          <mat-form-field class="full-width-field">
+            <mat-label for="name">Idioma</mat-label>
+            <mat-select
+              [compareWith]="compareName"
+              name="name"
+              formControlName="name"
+            >
+              <mat-option [value]="name" *ngFor="let name of languageNames">
+                {{ name.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="form-group">
+          <mat-form-field class="full-width-field">
+            <mat-label for="date">Fecha de obtención del título</mat-label>
+            <input
+              matInput
+              [matDatepicker]="myDatePicker"
+              formControlName="date"
+            />
+            <mat-datepicker-toggle
+              [for]="myDatePicker"
+              matSuffix
+            ></mat-datepicker-toggle>
+            <mat-datepicker #myDatePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions style="margin-top: 20px; text-align: right;">
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          [disabled]="rForm.invalid"
+        >
+          Guardar
+        </button></mat-card-actions
+      >
+    </form>
+  </mat-card>
+</div>

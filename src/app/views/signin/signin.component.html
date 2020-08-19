@@ -1,0 +1,79 @@
+<div fxLayout="column" fxLayoutAlign="center center" style="height: 700px;">
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <mat-card>
+      <mat-card-title color="primary">Login</mat-card-title>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-card-content>
+          <mat-error *ngIf="errorLogin">
+            <button type="button" class="close" data-dismiss="alert">
+              &times;
+            </button>
+            There is an error in email or password
+          </mat-error>
+
+          <div class="form-group">
+            <mat-form-field class="full-width-field">
+              <mat-label for="email">Email</mat-label>
+              <input
+                matInput
+                type="text"
+                id="email"
+                formControlName="email"
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': submitted && loginForm.controls.email.errors
+                }"
+              />
+              <mat-error
+                *ngIf="
+                  !loginForm.controls['email'].valid &&
+                  loginForm.controls['email'].touched
+                "
+              >
+                Required field, must be a valid email address.
+              </mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group">
+            <mat-form-field class="full-width-field">
+              <mat-label for="password">Password</mat-label>
+              <input
+                matInput
+                type="password"
+                id="password"
+                formControlName="password"
+                class="form-control"
+                [ngClass]="{
+                  'is-invalid': submitted && loginForm.controls.password.errors
+                }"
+              />
+              <mat-error
+                *ngIf="
+                  !loginForm.controls['password'].valid &&
+                  loginForm.controls['password'].touched
+                "
+              >
+                Required field.
+              </mat-error></mat-form-field
+            >
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <div class="form-group">
+            <button
+              mat-raised-button
+              color="primary"
+              [disabled]="loginForm.invalid"
+            >
+              Login
+            </button>
+
+            <button mat-button>
+              <a routerLink="/forgot-password">Remember password</a>
+            </button>
+          </div>
+        </mat-card-actions>
+      </form>
+    </mat-card>
+  </div>
+</div>
