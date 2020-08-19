@@ -1,6 +1,7 @@
 # UOCJob
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0.
+Angular NgRx Store and Angular Material has been used.
 
 ## Development server
 
